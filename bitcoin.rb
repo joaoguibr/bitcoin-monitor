@@ -1,31 +1,36 @@
-# frozen_string_literal: true
-
 require 'net/http'
 require 'json'
-require 'bye'
+require 'dotenv/load'
 
-def fetch_bitcoin_price
-    puts 'Calculating bitcoin price...'
+class Bitcoin
+  def initialize(url, api_key)
+    @url = url
+    @api_key = api_key
+  end
 
-    url_in_dollar = URI('https://api.kraken.com/0/public/Ticker?pair=XBTUSD')
-    url_in_euro = URI('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur')
-    url_in_brl = URI('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl')
+  def bitcoin_price
+    puts "The current price of Bitcoin is: US$ #{get_price}"
+  end
 
-    response_in_dollar = Net::HTTP.get(url_in_dollar)
-    # response_in_euro = Net::HTTP.get(url_in_euro)
-    # response_in_brl = Net::HTTP.get(url_in_brl)
+  private
 
-    bitcoin_price_in_dollar = JSON.parse(response_in_dollar)
-    # bitcoin_price_in_euro = JSON.parse(response_in_euro)
-    # bitcoin_price_in_brl = JSON.parse(response_in_brl)
+  def get_price
+    url = URI(@url)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
 
-    binding.pry
+    request = Net::HTTP::Get.new(url)
+    request["X-Api-Key"] = @api_key
 
-    puts "Bitcoin price in dollar: US$#{bitcoin_price_in_dollar}"
-    # puts "Bitcoin price in euro: €#{bitcoin_price_in_euro}"
-    # puts "Bitcoin price in brl: R$#{bitcoin_price_in_brl}"
+    response = http.request(request)
+    data = JSON.parse(response.body)
 
-    sleep 5
+    data['price'].to_f
+  end
 end
 
-fetch_bitcoin_price
+api_key = ENV['API_KEY']
+url = "https://api.api-ninjas.com/v1/cryptoprice?symbol=BTCUSD"
+
+bitcoin = Bitcoin.new(url, api_key)
+bitcoin.bitcoin_price
