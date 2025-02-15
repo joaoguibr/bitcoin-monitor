@@ -1,6 +1,6 @@
 # Bitcoin Price Fetcher
 
-This is a simple Ruby script that fetches the current Bitcoin price using the [API Ninjas Crypto Price API](https://api-ninjas.com/api/cryptoprice).
+This is a Ruby script that fetches the current Bitcoin price using the [API Ninjas Crypto Price API](https://api-ninjas.com/api/cryptoprice).
 
 ## Requirements
 
