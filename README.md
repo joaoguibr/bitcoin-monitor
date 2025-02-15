@@ -1,4 +1,4 @@
-# Bitcoin Price Fetcher
+# Bitcoin Price Monitor
 
 This is a Ruby script that fetches the current Bitcoin price using the [API Ninjas Crypto Price API](https://api-ninjas.com/api/cryptoprice).
 
@@ -11,8 +11,8 @@ This is a Ruby script that fetches the current Bitcoin price using the [API Ninj
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/bitcoin-price-fetcher.git
-   cd bitcoin-price-fetcher
+   git clone https://github.com/joaoguibr/bitcoin-monitor.git
+   cd bitcoin-monitor
    ```
 
 2. **Install dependencies:**
