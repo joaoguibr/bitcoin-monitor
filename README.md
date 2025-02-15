@@ -61,4 +61,5 @@ This project is open-source and available under the MIT License.
 ---
 
 **Author:** João Guilherme
+
 **GitHub:** [joaoguibr](https://github.com/joaoguibr)
