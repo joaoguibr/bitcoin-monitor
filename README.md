@@ -54,10 +54,6 @@ All dependencies are listed in the `Gemfile`. To install them, simply run:
 bundle install
 ```
 
-## License
-
-This project is open-source and available under the MIT License.
-
 ---
 
 **Author:** João Guilherme
